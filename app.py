@@ -107,7 +107,7 @@ if section == "Physical System":
             """
             Where:
             - $T(x, y, t)$ is temperature.
-            - $\alpha$ is thermal diffusivity.
+            - $\\alpha$ is thermal diffusivity.
             - Boundary and initial conditions define the unique solution.
             """
         )
@@ -182,7 +182,7 @@ if section == "How They Learn":
         st.markdown(
             """
             **Physics-informed (PINN)**
-            - Learns a function $T_\theta(x, y, t)$.
+            - Learns a function $T_{\\theta}(x, y, t)$.
             - Loss combines:
               - Data fit loss,
               - PDE residual loss,
