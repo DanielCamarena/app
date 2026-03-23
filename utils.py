@@ -49,15 +49,19 @@ def estimate_compute_metrics(
     observed_points = sensors * time_steps
     hidden_units = int(model_size_m * 1_000_000)
 
+    # Resolution increases the number of field values or tokens the model must handle.
+    resolution_factor = grid_points / 1000.0
+    effective_collocation = collocation_points + int(0.35 * grid_points)
+
     # Proxy operation counts (for comparison only).
-    nn_ops = observed_points * hidden_units * 2.2
-    transformer_ops = observed_points * hidden_units * 3.1
-    pinn_ops = (collocation_points + observed_points) * hidden_units * 2.8
+    nn_ops = observed_points * hidden_units * (2.0 + 0.18 * resolution_factor)
+    transformer_ops = observed_points * hidden_units * (2.6 + 0.30 * resolution_factor)
+    pinn_ops = (effective_collocation + observed_points) * hidden_units * (2.4 + 0.08 * resolution_factor)
 
     # Memory proxies in GB.
-    nn_mem_gb = (hidden_units * 4 + observed_points * 8) / 1e9
-    transformer_mem_gb = (hidden_units * 5 + observed_points * 12) / 1e9
-    pinn_mem_gb = (hidden_units * 4 + (collocation_points + observed_points) * 10) / 1e9
+    nn_mem_gb = (hidden_units * 4 + observed_points * 8 + grid_points * 16) / 1e9
+    transformer_mem_gb = (hidden_units * 5 + observed_points * 12 + grid_points * 24) / 1e9
+    pinn_mem_gb = (hidden_units * 4 + (effective_collocation + observed_points) * 10 + grid_points * 12) / 1e9
 
     # Relative wall-clock proxy where matrix multiplications dominate.
     nn_time = nn_ops / 1e11

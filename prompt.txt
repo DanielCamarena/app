@@ -1,0 +1,119 @@
+Quiero que desarrolles una aplicación completa en Streamlit, lista para ejecutar localmente, subir a GitHub y desplegar en Streamlit Community Cloud.
+
+Contexto del proyecto:
+Esta app es para un assignment universitario de IA en ingeniería. El tema es:
+“The Data & Compute Reality Check: Neural Networks/Transformers vs Physics-Informed Neural Networks (PINNs)”
+El sistema físico elegido es la difusión de calor en una placa 2D.
+
+Objetivo de la app:
+Crear una app interactiva, profesional y clara, orientada a un engineering manager, que explique visualmente y con rigor técnico:
+1. el problema físico de difusión de calor en una placa,
+2. la diferencia entre redes neuronales tradicionales / Transformers y PINNs,
+3. los trade-offs entre ambos enfoques,
+4. la realidad computacional (compute reality),
+5. los cuellos de botella de operaciones matriciales,
+6. la intuición de escalamiento,
+7. los problemas de calidad de datos,
+8. los riesgos de data leakage,
+9. una recomendación final de cuándo conviene cada enfoque.
+
+Requisitos funcionales:
+- La app debe estar hecha en Python con Streamlit.
+- Debe tener una interfaz limpia, moderna y académicamente presentable.
+- Debe estar organizada en secciones claras, usando sidebar, tabs, expanders o columnas cuando tenga sentido.
+- Debe ejecutarse con:
+  streamlit run app.py
+
+Estructura deseada de la app:
+1. Página principal con título, subtítulo y contexto del problema.
+2. Sección “Physical System”
+   - Explicar la difusión de calor en una placa 2D.
+   - Mostrar una figura o heatmap sintético de temperatura.
+   - Incluir la ecuación del calor en formato matemático.
+3. Sección “Modeling Approaches”
+   - Comparar Traditional Neural Networks / Transformers vs PINNs.
+   - Incluir una tabla comparativa clara.
+4. Sección “How They Learn”
+   - Explicar data-driven learning vs physics-informed learning.
+   - Añadir diagramas simples con markdown, mermaid si conviene, o visualizaciones en Streamlit.
+5. Sección “Compute Reality”
+   - Explicar por qué el entrenamiento depende de hardware, memoria, tiempo y costo.
+   - Explicar el rol de multiplicaciones de matrices y backpropagation.
+6. Sección “Scaling Intuition”
+   - Incluir controles interactivos con sliders para variar:
+     - número de sensores,
+     - resolución espacial,
+     - número de time steps,
+     - tamaño del modelo,
+     - número de collocation points para PINNs.
+   - Mostrar gráficos conceptuales del crecimiento de costo computacional.
+   - No necesito fidelidad física exacta; sí una representación conceptual clara.
+7. Sección “Data Bottlenecks”
+   - Explicar sparse sensors, ruido, datos faltantes, boundary conditions incompletas y simulation-to-reality mismatch.
+8. Sección “Data Leakage”
+   - Explicar ejemplos concretos de leakage en este sistema:
+     - usar snapshots futuros,
+     - train/test split aleatorio en datos altamente correlacionados espacio-temporalmente,
+     - incluir variables que revelan indirectamente el target.
+   - Mostrar al menos un esquema visual de “incorrect split” vs “correct split”.
+9. Sección “Final Recommendation”
+   - Resumir cuándo conviene NN/Transformers y cuándo conviene PINNs.
+   - Cerrar con un mensaje ejecutivo.
+
+Requisitos técnicos:
+- Usa solo librerías razonables para una app simple de curso.
+- Prioriza compatibilidad con Streamlit Community Cloud.
+- Usa dependencias comunes y estables.
+- Incluye un requirements.txt mínimo y correcto.
+- Usa nombres de archivos claros.
+- El archivo principal debe ser app.py.
+- La app debe funcionar sin APIs externas ni claves.
+- No dependas de bases de datos.
+- No dependas de archivos externos obligatorios.
+- Si usas datos, que sean generados sintéticamente dentro del proyecto.
+
+Diseño y UX:
+- Quiero una app visualmente atractiva pero sobria.
+- Usa métricas, tablas, gráficos y bloques explicativos.
+- Evita exceso de texto corrido.
+- Usa mensajes claros para público técnico no especialista en ML.
+- Debe verse como un pitch técnico profesional, no como una notebook pegada en una web.
+
+Entregables que quiero que generes:
+1. app.py completo.
+2. requirements.txt.
+3. README.md con:
+   - descripción del proyecto,
+   - cómo instalar dependencias,
+   - cómo ejecutarlo localmente,
+   - cómo subirlo a GitHub,
+   - cómo desplegarlo en Streamlit Community Cloud.
+4. .gitignore adecuado para Python/Streamlit.
+5. Si hace falta, una pequeña estructura modular como:
+   - app.py
+   - utils.py
+   - assets/ (solo si realmente aporta)
+
+Restricciones importantes:
+- No crees código innecesariamente complejo.
+- No uses frameworks web distintos de Streamlit.
+- No uses JavaScript.
+- No sobrecargues la app con demasiadas animaciones.
+- Quiero claridad, mantenibilidad y despliegue sencillo.
+- Evita errores comunes de importación o rutas.
+- Asegúrate de que todo quede listo para un primer commit en GitHub.
+
+Forma de trabajo:
+1. Primero propón la estructura de archivos.
+2. Luego crea el código completo de cada archivo.
+3. Verifica coherencia entre imports y dependencias.
+4. Revisa que requirements.txt sea consistente con el código.
+5. Añade comentarios útiles en el código, pero no excesivos.
+6. Si detectas una mejor organización del proyecto, aplícala.
+7. Al final, dame un breve checklist de despliegue:
+   - ejecutar localmente,
+   - hacer commit,
+   - push a GitHub,
+   - desplegar en Streamlit Cloud.
+
+Empieza ahora generando la estructura propuesta y luego el contenido completo de todos los archivos.
